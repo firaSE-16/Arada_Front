@@ -1,0 +1,262 @@
+{
+  "Cardiology Department": [
+    {
+      "name": "Dr. John Doe",
+      "specialization": "Cardiologist",
+      "profile_image": "../src/assets/Doctors/JohnDoe.jpeg",
+      "department": "Cardiology",
+      "years_of_experience": 15,
+      "contact": "john.doe@hospital.com",
+      "rating": 4.5,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Jane Smith",
+      "specialization": "Cardiologist",
+      "profile_image": "../src/assets/Doctors/JaneSmith.jpeg",
+      "department": "Cardiology",
+      "years_of_experience": 10,
+      "contact": "jane.smith@hospital.com",
+      "rating": 4.3,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Alice Johnson",
+      "specialization": "Cardiovascular Surgeon",
+      "profile_image": "../src/assets/Doctors/AliceJohnson.jpeg",
+      "department": "Cardiology",
+      "years_of_experience": 12,
+      "contact": "alice.johnson@hospital.com",
+      "rating": 4.7,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Michael Lee",
+      "specialization": "Interventional Cardiologist",
+      "profile_image": "../src/assets/Doctors/MichaelLee.jpeg",
+      "department": "Cardiology",
+      "years_of_experience": 9,
+      "contact": "michael.lee@hospital.com",
+      "rating": 4.2,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Sarah Williams",
+      "specialization": "Electrophysiologist",
+      "profile_image": "../src/assets/Doctors/SarahWilliams.jpeg",
+      "department": "Cardiology",
+      "years_of_experience": 8,
+      "contact": "sarah.williams@hospital.com",
+      "rating": 4.6,
+      "schedule": "TBD"
+    }
+  ],
+  "Geriatric Department": [
+    {
+      "name": "Dr. Emily White",
+      "specialization": "Geriatrician",
+      "profile_image": "../src/assets/Doctors/EmilyWhite.jpeg",
+      "department": "Geriatrics",
+      "years_of_experience": 14,
+      "contact": "emily.white@hospital.com",
+      "rating": 4.8,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Robert Black",
+      "specialization": "Geriatric Specialist",
+      "profile_image": "../src/assets/Doctors/RobertBlack.jpeg",
+      "department": "Geriatrics",
+      "years_of_experience": 16,
+      "contact": "robert.black@hospital.com",
+      "rating": 4.4,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Linda Green",
+      "specialization": "Geriatric Psychiatry",
+      "profile_image": "../src/assets/Doctors/LindaGreen.jpeg",
+      "department": "Geriatrics",
+      "years_of_experience": 13,
+      "contact": "linda.green@hospital.com",
+      "rating": 4.6,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Karen Davis",
+      "specialization": "Internal Medicine for Elderly",
+      "profile_image": "../src/assets/Doctors/KarenDavis.jpeg",
+      "department": "Geriatrics",
+      "years_of_experience": 11,
+      "contact": "karen.davis@hospital.com",
+      "rating": 4.3,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. William Scott",
+      "specialization": "Geriatric Neurologist",
+      "profile_image": "../src/assets/Doctors/WilliamScott.jpeg",
+      "department": "Geriatrics",
+      "years_of_experience": 10,
+      "contact": "william.scott@hospital.com",
+      "rating": 4.5,
+      "schedule": "TBD"
+    }
+  ],
+  "Gastroenterology Department": [
+    {
+      "name": "Dr. David Harris",
+      "specialization": "Gastroenterologist",
+      "profile_image": "../src/assets/Doctors/DavidHarris.jpeg",
+      "department": "Gastroenterology",
+      "years_of_experience": 17,
+      "contact": "david.harris@hospital.com",
+      "rating": 4.7,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Patricia Lee",
+      "specialization": "Hepatologist",
+      "profile_image": "../src/assets/Doctors/PatriciaLee.jpeg",
+      "department": "Gastroenterology",
+      "years_of_experience": 14,
+      "contact": "patricia.lee@hospital.com",
+      "rating": 4.4,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Joshua Clark",
+      "specialization": "Endoscopist",
+      "profile_image": "../src/assets/Doctors/JoshuaClark.jpeg",
+      "department": "Gastroenterology",
+      "years_of_experience": 12,
+      "contact": "joshua.clark@hospital.com",
+      "rating": 4.3,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Maria Perez",
+      "specialization": "Gastrointestinal Surgeon",
+      "profile_image": "../src/assets/Doctors/MariaPerez.jpeg",
+      "department": "Gastroenterology",
+      "years_of_experience": 15,
+      "contact": "maria.perez@hospital.com",
+      "rating": 4.6,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Emily Turner",
+      "specialization": "Gastroenterologist",
+      "profile_image": "../src/assets/Doctors/EmilyTurner.jpeg",
+      "department": "Gastroenterology",
+      "years_of_experience": 10,
+      "contact": "emily.turner@hospital.com",
+      "rating": 4.5,
+      "schedule": "TBD"
+    }
+  ],
+  "Gynecology Department": [
+    {
+      "name": "Dr. Laura Roberts",
+      "specialization": "Gynecologist",
+      "profile_image": "../src/assets/Doctors/LauraRoberts.jpeg",
+      "department": "Gynecology",
+      "years_of_experience": 18,
+      "contact": "laura.roberts@hospital.com",
+      "rating": 4.9,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Mary Collins",
+      "specialization": "Obstetrician-Gynecologist",
+      "profile_image": "../src/assets/Doctors/MaryCollins.jpeg",
+      "department": "Gynecology",
+      "years_of_experience": 16,
+      "contact": "mary.collins@hospital.com",
+      "rating": 4.6,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Lisa Adams",
+      "specialization": "Reproductive Health Specialist",
+      "profile_image": "../src/assets/Doctors/LisaAdams.jpeg",
+      "department": "Gynecology",
+      "years_of_experience": 14,
+      "contact": "lisa.adams@hospital.com",
+      "rating": 4.4,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. James Miller",
+      "specialization": "Gynecologic Oncologist",
+      "profile_image": "../src/assets/Doctors/JamesMiller.jpeg",
+      "department": "Gynecology",
+      "years_of_experience": 13,
+      "contact": "james.miller@hospital.com",
+      "rating": 4.8,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Sophia Taylor",
+      "specialization": "Obstetrics",
+      "profile_image": "../src/assets/Doctors/SophiaTaylor.jpeg",
+      "department": "Gynecology",
+      "years_of_experience": 10,
+      "contact": "sophia.taylor@hospital.com",
+      "rating": 4.7,
+      "schedule": "TBD"
+    }
+  ],
+  "Pediatrics Department": [
+    {
+      "name": "Dr. Charles Brown",
+      "specialization": "Pediatrician",
+      "profile_image": "../src/assets/Doctors/CharlesBrown.jpeg",
+      "department": "Pediatrics",
+      "years_of_experience": 14,
+      "contact": "charles.brown@hospital.com",
+      "rating": 4.6,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Hannah Garcia",
+      "specialization": "Pediatric Specialist",
+      "profile_image": "../src/assets/Doctors/HannahGarcia.jpeg",
+      "department": "Pediatrics",
+      "years_of_experience": 12,
+      "contact": "hannah.garcia@hospital.com",
+      "rating": 4.4,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Robert King",
+      "specialization": "Pediatric Neurologist",
+      "profile_image": "../src/assets/Doctors/RobertKing.jpeg",
+      "department": "Pediatrics",
+      "years_of_experience": 15,
+      "contact": "robert.king@hospital.com",
+      "rating": 4.8,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. Olivia Scott",
+      "specialization": "Pediatric Surgeon",
+      "profile_image": "../src/assets/Doctors/OliviaScott.jpeg",
+      "department": "Pediatrics",
+      "years_of_experience": 13,
+      "contact": "olivia.scott@hospital.com",
+      "rating": 4.7,
+      "schedule": "TBD"
+    },
+    {
+      "name": "Dr. William Nelson",
+      "specialization": "Pediatric Endocrinologist",
+      "profile_image": "../src/assets/Doctors/WilliamNelson.jpeg",
+      "department": "Pediatrics",
+      "years_of_experience": 10,
+      "contact": "william.nelson@hospital.com",
+      "rating": 4.5,
+      "schedule": "TBD"
+    }
+  ]
+}

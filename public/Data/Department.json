@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Cardiology Department",
+    "image": "../src/assets/Department/Cardiology.jpeg",
+    "description": "Provides diagnosis and treatment for heart-related conditions, such as hypertension, coronary artery disease, and arrhythmias, using advanced diagnostic techniques.",
+    "history": "Founded to address the rising need for specialized cardiac services, this department integrates cutting-edge technology and expert care to improve cardiovascular health outcomes."
+  },
+  {
+    "name": "Geriatric Department",
+    "image": "../src/assets/Department/Geriatric.jpeg",
+    "description": "Focuses on the healthcare needs of elderly patients, offering chronic disease management, preventive care, and treatment of age-related conditions.",
+    "history": "Established as part of the growing need to cater to the medical and social care of an aging population, focusing on managing chronic diseases and improving the quality of life for elderly patients."
+  },
+  {
+    "name": "Gastroenterology Department",
+    "image": "../src/assets/Department/Gastroenterology.jpeg",
+    "description": "Specializes in diagnosing and treating disorders of the digestive system, including liver diseases, ulcers, and irritable bowel syndrome (IBS).",
+    "history": "Created to offer specialized care in diagnosing and treating gastrointestinal disorders, including the use of state-of-the-art diagnostic tools like endoscopy for comprehensive patient care."
+  },
+  {
+    "name": "Gynecology Department",
+    "image": "../src/assets/Department/Gynecology.jpeg",
+    "description": "Provides comprehensive care for women's health, including reproductive system disorders, pre-natal, and post-natal services, along with preventive screenings.",
+    "history": "Founded to offer comprehensive healthcare services for women, with a focus on reproductive health, prenatal care, and gynecological surgery, utilizing advanced diagnostic techniques."
+  },
+  {
+    "name": "Pediatrics Department",
+    "image": "../src/assets/Department/Pediatrics.jpeg",
+    "description": "Provides healthcare for children, including immunizations, developmental assessments, and care for both acute and chronic conditions.",
+    "history": "Developed to provide holistic healthcare for children, focusing on prevention, immunization, and age-specific health needs with a dedicated pediatric team."
+  },
+  {
+    "name": "Neurology Department",
+    "image": "../src/assets/Department/Neurology.jpeg",
+    "description": "Specializes in the diagnosis and treatment of neurological disorders, such as epilepsy, strokes, and neurodegenerative diseases.",
+    "history": "Established to provide advanced neurological care, this department offers specialized treatments for conditions like epilepsy, stroke, and neurodegenerative diseases, supported by the latest imaging technologies."
+  },
+  {
+    "name": "Oncology Department",
+    "image": "../src/assets/Department/Oncology.jpeg",
+    "description": "Focuses on cancer diagnosis, treatment, and follow-up care, offering services like chemotherapy, radiation therapy, and targeted treatments.",
+    "history": "Created to provide comprehensive cancer care, integrating prevention, early diagnosis, and innovative therapies, including chemotherapy and radiotherapy, to improve patient outcomes."
+  },
+  {
+    "name": "Ophthalmology Department",
+    "image": "../src/assets/Department/Ophthalmology.jpeg",
+    "description": "Provides care for a wide range of eye conditions, including vision testing, cataract surgeries, and treatments for glaucoma and other diseases.",
+    "history": "Founded to combat preventable blindness and provide high-quality care for various eye conditions, offering advanced diagnostic services and surgical interventions."
+  },
+  {
+    "name": "Orthopedic Department",
+    "image": "../src/assets/Department/Orthopedic.jpeg",
+    "description": "Specializes in the treatment of musculoskeletal conditions, including fractures, joint disorders, and surgeries like joint replacements.",
+    "history": "Specialized in providing care for musculoskeletal injuries and conditions, the department offers advanced surgical and non-surgical treatments for bones, joints, and soft tissues."
+  },
+  {
+    "name": "Urology Department",
+    "image": "../src/assets/Department/Urology.jpeg",
+    "description": "Treats conditions related to the urinary tract and male reproductive system, including kidney stones, urinary infections, and prostate issues.",
+    "history": "Developed to meet the growing need for specialized care in the diagnosis and treatment of urological conditions, focusing on minimally invasive techniques for improved patient recovery."
+  },
+  {
+    "name": "Psychiatry Department",
+    "image": "../src/assets/Department/Psychiatry.jpeg",
+    "description": "Provides mental health services, including therapy and medication for conditions like depression, anxiety, and schizophrenia.",
+    "history": "Created to support mental health with a comprehensive approach that includes diagnosis, counseling, and psychiatric care for conditions such as depression, anxiety, and schizophrenia."
+  },
+  {
+    "name": "Dermatology Department",
+    "image": "../src/assets/Department/Dermatology.jpeg",
+    "description": "Specializes in the diagnosis and treatment of skin conditions, including acne, eczema, and skin cancer screenings.",
+    "history": "Launched to address the growing need for specialized care in skin health, the department provides both medical and cosmetic dermatology services, utilizing the latest technologies for diagnosis and treatment."
+  },
+  {
+    "name": "ENT (Ear, Nose, and Throat) Department",
+    "image": "../src/assets/Department/Ent.jpeg",
+    "description": "Offers treatments for conditions affecting the ear, nose, throat, and head, including hearing loss, sinus issues, and throat disorders.",
+    "history": "Formed to provide specialized care for conditions of the ear, nose, throat, and neck, using advanced diagnostic tools to treat a variety of conditions from hearing loss to sinus disorders."
+  },
+  {
+    "name": "Dental Services",
+    "image": "../src/assets/Department/Dental.jpeg",
+    "description": "Provides a range of dental services, from routine cleanings to more complex procedures such as fillings, crowns, and cosmetic dentistry.",
+    "history": "Developed to provide comprehensive dental care, including preventive, restorative, and cosmetic procedures, with a focus on maintaining oral health and preventing dental diseases."
+  }
+]
