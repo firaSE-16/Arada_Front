@@ -5,7 +5,7 @@ import About from "./pages/About/About";
 import AuthPage from "./pages/Auth/Auth";
 import Contact from "./pages/Contact/Contact";
 import Department from "./pages/Department/Department";
-import AssignedRecords from "./pages/doctor/AssignedRecords";
+import AssignedRecords from "./pages/Doctor/AssignedRecords";
 import PatientDetail from "./pages/Doctor/PatientDetail";
 import Doctor from "./pages/Doctors/Doctor";
 import Home from "./pages/Home/Home";
