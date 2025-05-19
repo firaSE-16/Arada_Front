@@ -16,7 +16,7 @@ import StaffManagement from "./pages/hospitalAdmin/StaffManagement";
 import ViewRecords from "./pages/hospitalAdmin/ViewRecords";
 import LabForm from "./pages/labratorist/LabForm";
 import LabRequests from "./pages/labratorist/LabRequests";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Notfound";
 import Patient from "./pages/Patient/Patient";
 import NewRegistration from "./pages/receptionist/NewRegistration";
 import PatientRegistration from "./pages/receptionist/PatientRegistration";
