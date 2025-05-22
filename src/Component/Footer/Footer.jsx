@@ -11,8 +11,8 @@ import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="font-outfit bg-[#04353D] text-white py-12 px-6 w-full">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="font-outfit bg-[#04353D] text-white w-full mt-auto">
+      <div className="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About Section */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
@@ -76,9 +76,11 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-10 text-center text-gray-400 text-sm">
-        <hr className="border-gray-600 mb-4" />
-        <p>© 2025 MedSync. All Rights Reserved.</p>
+      <div className="max-w-screen-xl mx-auto px-6">
+        <hr className="border-gray-600" />
+        <div className="py-4 text-center text-gray-400 text-sm">
+          <p>© 2025 MedSync. All Rights Reserved.</p>
+        </div>
       </div>
     </footer>
   );

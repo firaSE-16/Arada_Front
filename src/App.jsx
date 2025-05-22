@@ -8,7 +8,7 @@ import { useUser } from "./context/UserContext";
 
 function App() {
   const { userRole, setUserRole } = useUser();
-  const [loading, setLoading] = useState(true);
+  const [authChecked, setAuthChecked] = useState(false); // Track auth state
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,33 +18,27 @@ function App() {
       } catch (error) {
         setUserRole(null);
       } finally {
-        setLoading(false);
+        setAuthChecked(true); // Auth check complete
       }
     };
 
     fetchUser();
   }, [setUserRole]);
 
-  if (loading) {
-    return <div className="p-4 text-center">Loading...</div>;
+  // Wait until auth check is done before rendering routes
+  if (!authChecked) {
+    return (
+      <div className="grid place-items-center h-screen">
+        
+      </div>
+    );
   }
 
   return (
     <BrowserRouter>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer />
       <AppRoutes userRole={userRole} />
     </BrowserRouter>
   );
 }
-
 export default App;

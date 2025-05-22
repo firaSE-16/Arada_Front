@@ -258,7 +258,7 @@ if (responseData.role === "Patient") {
           )}
         />
 
-        <Button type="submit" className="w-full">
+        <Button type="submit"  className="bg-[#5AC5C8] text-white w-full">
           Sign In
         </Button>
       </form>
@@ -409,7 +409,7 @@ if (responseData.role === "Patient") {
               >
                 Back to Login
               </Button>
-              <Button type="submit">Next: Contact Info</Button>
+              <Button type="submit" className="bg-[#5AC5C8] text-white">Next: Contact Info</Button>
             </div>
           </form>
         </Form>
@@ -533,12 +533,12 @@ if (responseData.role === "Patient") {
             <div className="flex justify-between pt-4">
               <Button
                 type="button"
-                variant="outline"
+className="bg-[#5AC5C8] text-white"
                 onClick={() => setStep(2)}
               >
                 Back
               </Button>
-              <Button type="submit">Complete Registration</Button>
+              <Button type="submit" className="bg-[#5AC5C8] text-white">Complete Registration</Button>
             </div>
           </form>
         </Form>

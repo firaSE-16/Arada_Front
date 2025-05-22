@@ -2,14 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { ChevronLeft, ClipboardList } from "lucide-react"
+import { ChevronLeft, ClipboardList, User, Phone, Calendar, MapPin, HeartPulse } from "lucide-react"
 import axios from "axios"
 import { BASE_URL } from "@/lib/utils"
 import moment from "moment"
@@ -21,17 +14,11 @@ const RegisteredPatient = () => {
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
-  
   const [medicalHistory, setMedicalHistory] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        
-        
-        
-
-        // Then fetch patient data
         const patientRes = await axios.get(`${BASE_URL}/reception/patient/${faydaID}`, {
           withCredentials: true
         })
@@ -60,7 +47,7 @@ const RegisteredPatient = () => {
   }, [faydaID, navigate])
 
   const handleSubmit = async () => {
-    if ( !patient) return
+    if (!patient) return
 
     setSubmitting(true)
     try {
@@ -69,7 +56,6 @@ const RegisteredPatient = () => {
         {
           ...patient,
           faydaID,
-         
           medicalHistory,
           dateOfBirth: moment(patient.dateOfBirth).format('YYYY-MM-DD')
         },
@@ -91,9 +77,10 @@ const RegisteredPatient = () => {
 
   if (loading) {
     return (
-      <div className="p-6 space-y-6">
-        <div className="flex items-center justify-center h-64">
-          <p>Loading patient details...</p>
+      <div className="min-h-screen bg-white flex items-center justify-center font-outfit">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#5AC5C8] border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p className="text-lg text-gray-600">Loading patient information...</p>
         </div>
       </div>
     )
@@ -101,13 +88,21 @@ const RegisteredPatient = () => {
 
   if (error) {
     return (
-      <div className="p-6 space-y-6">
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <p className="text-red-500">{error}</p>
-          <Button onClick={() => navigate('/receptionist/registration')}>
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Patient Search
-          </Button>
+      <div className="min-h-screen bg-white flex items-center justify-center font-outfit px-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg max-w-md">
+          <div className="inline-block p-4 bg-red-50 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <p className="text-lg text-gray-700 mb-6">{error}</p>
+          <button 
+            onClick={() => navigate('/receptionist/registration')}
+            className="inline-flex items-center px-6 py-3 bg-[#5AC5C8] text-white rounded-full hover:bg-[#4AB0B3] transition-all transform hover:scale-105"
+          >
+            <ChevronLeft className="h-5 w-5 mr-2" />
+            Return to Search
+          </button>
         </div>
       </div>
     )
@@ -115,113 +110,169 @@ const RegisteredPatient = () => {
 
   if (!patient) {
     return (
-      <div className="p-6 space-y-6">
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <p>Patient not found</p>
-          <Button onClick={() => navigate('/receptionist/registration')}>
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Patient Search
-          </Button>
+      <div className="min-h-screen bg-white flex items-center justify-center font-outfit px-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg max-w-md">
+          <div className="inline-block p-4 bg-gray-50 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p className="text-lg text-gray-700 mb-6">Patient not found</p>
+          <button 
+            onClick={() => navigate('/receptionist/registration')}
+            className="inline-flex items-center px-6 py-3 bg-[#5AC5C8] text-white rounded-full hover:bg-[#4AB0B3] transition-all transform hover:scale-105"
+          >
+            <ChevronLeft className="h-5 w-5 mr-2" />
+            Return to Search
+          </button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <ClipboardList className="h-6 w-6" />
-          Patient Details
-        </h1>
-        <Button variant="outline" onClick={() => navigate('/receptionist/registration')}>
-          <ChevronLeft className="mr-2 h-4 w-4" />
-          Back to Search
-        </Button>
-      </div>
+    <div className="min-h-screen bg-white py-12 px-4 font-outfit">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
+          <div>
+            <h1 className="text-4xl font-semibold text-gray-800">Patient Record</h1>
+            <p className="text-lg text-gray-600 mt-2">Review and initiate medical record for the patient</p>
+          </div>
+          <button 
+            onClick={() => navigate('/receptionist/registration')}
+            className="mt-4 sm:mt-0 inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105"
+          >
+            <ChevronLeft className="h-5 w-5 mr-2" />
+            Back to Search
+          </button>
+        </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center justify-between">
-            <div>
-              {patient.firstName} {patient.lastName}
-              <Badge variant="secondary" className="ml-4">
-                {patient.faydaID}
-              </Badge>
-            </div>
-            { (
-              <Badge variant="outline">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-lg">
+          <div className="p-8 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+              <div className="flex items-center gap-6">
+                <div className="h-16 w-16 rounded-full bg-[#5AC5C8] text-white font-semibold text-2xl flex items-center justify-center">
+                  {patient.firstName.charAt(0).toUpperCase()}{patient.lastName.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-semibold text-gray-800">{patient.firstName} {patient.lastName}</h2>
+                  <span className="inline-block mt-2 px-3 py-1 text-sm text-gray-600 border border-gray-300 rounded-full">
+                    ID: {patient.faydaID}
+                  </span>
+                </div>
+              </div>
+              <span className="inline-block px-3 py-1 text-sm text-gray-600 border border-gray-300 rounded-full">
                 Arada Hospital
-              </Badge>
-            )}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              </span>
+            </div>
+          </div>
+
+          <div className="p-8 space-y-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div>
+                <label className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                  <Calendar className="h-5 w-5 text-[#5AC5C8]" />
+                  Date of Birth
+                </label>
+                <input 
+                  value={moment(patient.dateOfBirth).format('DD MMM YYYY')} 
+                  readOnly 
+                  className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                />
+              </div>
+              <div>
+                <label className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                  <User className="h-5 w-5 text-[#5AC5C8]" />
+                  Gender
+                </label>
+                <input 
+                  value={patient.gender} 
+                  readOnly 
+                  className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                />
+              </div>
+              <div>
+                <label className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                  <Phone className="h-5 w-5 text-[#5AC5C8]" />
+                  Contact Number
+                </label>
+                <input 
+                  value={patient.contactNumber} 
+                  readOnly 
+                  className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                />
+              </div>
+              <div>
+                <label className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                  <MapPin className="h-5 w-5 text-[#5AC5C8]" />
+                  Address
+                </label>
+                <input 
+                  value={patient.address} 
+                  readOnly 
+                  className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                />
+              </div>
+            </div>
+
             <div>
-              <Label>Date of Birth</Label>
-              <Input 
-                value={moment(patient.dateOfBirth).format('DD MMM YYYY')} 
-                readOnly 
+              <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                <HeartPulse className="h-6 w-6 text-[#5AC5C8]" />
+                Emergency Contact
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div>
+                  <label className="text-gray-600 text-lg font-medium">Name</label>
+                  <input 
+                    value={patient.emergencyContact?.name || 'Not provided'} 
+                    readOnly 
+                    className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                  />
+                </div>
+                <div>
+                  <label className="text-gray-600 text-lg font-medium">Relationship</label>
+                  <input 
+                    value={patient.emergencyContact?.relation || 'Not provided'} 
+                    readOnly 
+                    className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                  />
+                </div>
+                <div>
+                  <label className="text-gray-600 text-lg font-medium">Phone</label>
+                  <input 
+                    value={patient.emergencyContact?.phone || 'Not provided'} 
+                    readOnly 
+                    className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label className="flex items-center gap-2 text-gray-600 text-lg font-medium">
+                <ClipboardList className="h-5 w-5 text-[#5AC5C8]" />
+                Medical History
+              </label>
+              <textarea
+                value={medicalHistory}
+                onChange={(e) => setMedicalHistory(e.target.value)}
+                placeholder="Enter patient's medical history"
+                className="mt-2 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-lg min-h-[120px]"
               />
             </div>
-            <div>
-              <Label>Gender</Label>
-              <Input value={patient.gender} readOnly />
-            </div>
-            <div>
-              <Label>Contact Number</Label>
-              <Input value={patient.contactNumber} readOnly />
-            </div>
-            <div>
-              <Label>Address</Label>
-              <Input value={patient.address} readOnly />
-            </div>
           </div>
 
-          <div className="pt-4">
-            <Label>Emergency Contact</Label>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-              <div>
-                <Label className="text-muted-foreground">Name</Label>
-                <Input 
-                  value={patient.emergencyContact?.name || 'Not provided'} 
-                  readOnly 
-                />
-              </div>
-              <div>
-                <Label className="text-muted-foreground">Relationship</Label>
-                <Input 
-                  value={patient.emergencyContact?.relation || 'Not provided'} 
-                  readOnly 
-                />
-              </div>
-              <div>
-                <Label className="text-muted-foreground">Phone</Label>
-                <Input 
-                  value={patient.emergencyContact?.phone || 'Not provided'} 
-                  readOnly 
-                />
-              </div>
-            </div>
+          <div className="p-8 border-t border-gray-200 flex justify-end">
+            <button 
+              onClick={handleSubmit} 
+              disabled={submitting}
+              className="px-6 py-3 bg-[#5AC5C8] text-white rounded-full hover:bg-[#4AB0B3] transition-all transform hover:scale-105 disabled:bg-[#A0D8DA]"
+            >
+              {submitting ? 'Processing...' : 'Initiate Medical Record'}
+            </button>
           </div>
-
-          <div className="pt-4">
-            <Label>Medical History</Label>
-            <Textarea
-              value={medicalHistory}
-              onChange={(e) => setMedicalHistory(e.target.value)}
-              placeholder="Update medical history if needed"
-              className="mt-2"
-            />
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-end">
-          <Button onClick={handleSubmit} disabled={submitting}>
-            {submitting ? 'Processing...' : 'Initiate Medical Record'}
-          </Button>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
     </div>
   )
 }

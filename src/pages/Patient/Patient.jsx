@@ -43,7 +43,7 @@ import {
 } from "@mui/icons-material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const BASE_URL = "http://localhost:7500/api";
+const BASE_URL = "https://arada-backk.onrender.com/api";
 
 // Custom theme with #5AC5C8 as primary color
 const theme = createTheme({

@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
-import getUser from "@/lib/getUser";
 import { roleRedirects } from "@/lib/role";
 import { useUser } from "@/context/UserContext";
 import hospitalImage from "@/images/hospital.jpg";
@@ -66,22 +64,21 @@ const Login = () => {
       });
   
       const responseData = await res.json();
-      console.log(responseData)
-   
+      
       if (!res.ok) {
         throw new Error(responseData.msg || "Login failed");
       }
-      const user = await getUser();
-      
- 
 
-      if (user) {
-        setUserRole(responseData.role);
-      console.log(roleRedirects[responseData.role])
-        
-        navigate(roleRedirects[responseData.role] || "/not-authorized");
-        toast.success("Login successful");
-      }
+      // Store authentication data
+      localStorage.setItem('authToken', responseData.token);
+      localStorage.setItem('userRole', responseData.role);
+      setUserRole(responseData.role);
+      
+      // Navigate to dashboard
+      const redirectPath = roleRedirects[responseData.role] || "/not-authorized";
+      navigate(redirectPath, { replace: true });
+      toast.success("Login successful");
+
     } catch (error) {
       toast.error(error.message);
       console.error("Login Error:", error);

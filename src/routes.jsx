@@ -37,6 +37,47 @@ const AppRoutes = ({ userRole }) => {
   const isStaffUser = staffRoles.includes(userRole);
   const isPatient = userRole === "Patient";
 
+  // Function to get dashboard route based on user role
+  const getDashboardRoute = () => {
+    switch(userRole) {
+      case "HospitalAdministrator":
+        return "/hospital-admin/dashboard";
+      case "Receptionist":
+        return "/receptionist/registration";
+      case "Triage":
+        return "/triage/unassigned";
+      case "Doctor":
+        return "/doctor/assigned-records";
+      case "LabTechnician":
+        return "/laboratorist/patientList";
+      case "Patient":
+        return "/user";
+      default:
+        return "/";
+    }
+  };
+
+ const ProtectedRoute = ({ children }) => {
+  if (userRole === null) {
+    // Still loading auth state, show nothing (or a loader)
+    return null;
+  }
+
+  if (!isStaffUser && !isPatient) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+  // PublicRoute component for non-authenticated users
+  const PublicRoute = ({ children }) => {
+    if (isStaffUser || isPatient) {
+      return <Navigate to={getDashboardRoute()} replace />;
+    }
+    return children;
+  };
+
   return (
     <div className="flex">
       {/* Sidebar only for staff users on their routes */}
@@ -48,69 +89,149 @@ const AppRoutes = ({ userRole }) => {
 
       <div className={`flex-1 ${isStaffUser ? "ml-80" : ""}`}>
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/department" element={<Layout><Department /></Layout>} />
-          <Route path="/about" element={<Layout><About /></Layout>} />
-          <Route path="/contact" element={<Layout><Contact /></Layout>} />
-          <Route path="/showDoctor" element={<Layout><Doctor /></Layout>} />
-          <Route path="/login" element={<AuthPage />} />
-
-          
+          {/* Public Routes - only accessible when not logged in */}
+          <Route path="/" element={
+            <PublicRoute>
+              <Layout><Home /></Layout>
+            </PublicRoute>
+          } />
+          <Route path="/department" element={
+            <PublicRoute>
+              <Layout><Department /></Layout>
+            </PublicRoute>
+          } />
+          <Route path="/about" element={
+            <PublicRoute>
+              <Layout><About /></Layout>
+            </PublicRoute>
+          } />
+          <Route path="/contact" element={
+            <PublicRoute>
+              <Layout><Contact /></Layout>
+            </PublicRoute>
+          } />
+          <Route path="/showDoctor" element={
+            <PublicRoute>
+              <Layout><Doctor /></Layout>
+            </PublicRoute>
+          } />
+          <Route path="/login" element={
+            <PublicRoute>
+              <AuthPage />
+            </PublicRoute>
+          } />
 
           {/* Hospital Admin Routes */}
-          {isStaffUser && userRole === "HospitalAdministrator" && (
-            <>
-              <Route path="/hospital-admin/dashboard" element={<HospitalAdminDashboard />} />
-              <Route path="/hospital-admin/add-staff" element={<AddNewStaff />} />
-              <Route path="/hospital-admin/edit-staff" element={<EditViewStaff />} />
-              <Route path="/hospital-admin/staff-management" element={<StaffManagement />} />
-              <Route path="/hospital-admin/view-records" element={<ViewRecords />} />
-              <Route path="/hospital-admin" element={<Navigate to="/hospital-admin/dashboard" />} />
-            </>
-          )}
+          <Route path="/hospital-admin/dashboard" element={
+            <ProtectedRoute>
+              <HospitalAdminDashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/hospital-admin/add-staff" element={
+            <ProtectedRoute>
+              <AddNewStaff />
+            </ProtectedRoute>
+          } />
+          <Route path="/hospital-admin/edit-staff" element={
+            <ProtectedRoute>
+              <EditViewStaff />
+            </ProtectedRoute>
+          } />
+          <Route path="/hospital-admin/staff-management" element={
+            <ProtectedRoute>
+              <StaffManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/hospital-admin/view-records" element={
+            <ProtectedRoute>
+              <ViewRecords />
+            </ProtectedRoute>
+          } />
+          <Route path="/hospital-admin" element={
+            <ProtectedRoute>
+              <Navigate to="/hospital-admin/dashboard" replace />
+            </ProtectedRoute>
+          } />
 
           {/* Receptionist Routes */}
-          {isStaffUser && userRole === "Receptionist" && (
-            <>
-              <Route path="/receptionist/registration" element={<PatientRegistration />} />
-              <Route path="/receptionist/registered/:faydaID" element={<RegisteredPatient />} />
-              <Route path="/receptionist/newRegistration" element={<NewRegistration />} />
-              <Route path="/receptionist" element={<Navigate to="/receptionist/dashboard" />} />
-            </>
-          )}
+          <Route path="/receptionist/registration" element={
+            <ProtectedRoute>
+              <PatientRegistration />
+            </ProtectedRoute>
+          } />
+          <Route path="/receptionist/registered/:faydaID" element={
+            <ProtectedRoute>
+              <RegisteredPatient />
+            </ProtectedRoute>
+          } />
+          <Route path="/receptionist/newRegistration" element={
+            <ProtectedRoute>
+              <NewRegistration />
+            </ProtectedRoute>
+          } />
+          <Route path="/receptionist" element={
+            <ProtectedRoute>
+              <Navigate to="/receptionist/registration" replace />
+            </ProtectedRoute>
+          } />
 
           {/* Triage Routes */}
-          {isStaffUser && userRole === "Triage" && (
-            <>
-              <Route path="/triage/process/:id" element={<ProcessPatient />} />
-              <Route path="/triage/unassigned" element={<UnassignedPatients />} />
-              <Route path="/triage" element={<Navigate to="/triage/dashboard" />} />
-            </>
-          )}
+          <Route path="/triage/process/:id" element={
+            <ProtectedRoute>
+              <ProcessPatient />
+            </ProtectedRoute>
+          } />
+          <Route path="/triage/unassigned" element={
+            <ProtectedRoute>
+              <UnassignedPatients />
+            </ProtectedRoute>
+          } />
+          <Route path="/triage" element={
+            <ProtectedRoute>
+              <Navigate to="/triage/unassigned" replace />
+            </ProtectedRoute>
+          } />
 
           {/* Doctor Routes */}
-          {isStaffUser && userRole === "Doctor" && (
-            <>
-              <Route path="/doctor/assigned-records" element={<AssignedRecords />} />
-              <Route path="/doctor/records/:patientId" element={<PatientDetail />} />
-              <Route path="/doctor" element={<Navigate to="/doctor/dashboard" />} />
-            </>
-          )}
+          <Route path="/doctor/assigned-records" element={
+            <ProtectedRoute>
+              <AssignedRecords />
+            </ProtectedRoute>
+          } />
+          <Route path="/doctor/records/:patientId" element={
+            <ProtectedRoute>
+              <PatientDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/doctor" element={
+            <ProtectedRoute>
+              <Navigate to="/doctor/assigned-records" replace />
+            </ProtectedRoute>
+          } />
 
           {/* Lab Technician Routes */}
-          {isStaffUser && userRole === "LabTechnician" && (
-            <>
-              <Route path="/laboratorist/patientList" element={<LabRequests />} />
-              <Route path="/laboratorist/requests/:id" element={<LabForm />} />
-              <Route path="/laboratorist" element={<Navigate to="/laboratorist/dashboard" />} />
-            </>
-          )}
+          <Route path="/laboratorist/patientList" element={
+            <ProtectedRoute>
+              <LabRequests />
+            </ProtectedRoute>
+          } />
+          <Route path="/laboratorist/requests/:id" element={
+            <ProtectedRoute>
+              <LabForm />
+            </ProtectedRoute>
+          } />
+          <Route path="/laboratorist" element={
+            <ProtectedRoute>
+              <Navigate to="/laboratorist/patientList" replace />
+            </ProtectedRoute>
+          } />
 
           {/* Patient Route */}
-          {isPatient && (
-            <Route path="/user" element={<Patient />} />
-          )}
+          <Route path="/user" element={
+            <ProtectedRoute>
+              <Patient />
+            </ProtectedRoute>
+          } />
 
           {/* Fallback */}
           <Route path="*" element={<NotFound />} />

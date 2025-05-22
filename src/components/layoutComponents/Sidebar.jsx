@@ -138,7 +138,7 @@ const Sidebar = () => {
             <div className="p-2 bg-white/10 rounded-lg">
               <Stethoscope className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-xl font-bold text-white tracking-wide">MediCare Pro</h1>
+            <h1 className="text-xl font-bold text-white tracking-wide">Arada Care</h1>
           </div>
           <button 
             className="hidden lg:block text-white/60 hover:text-white p-1"

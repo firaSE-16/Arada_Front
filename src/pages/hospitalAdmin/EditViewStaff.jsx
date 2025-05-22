@@ -9,7 +9,7 @@ const EditViewStaff = () => {
     {
       id: 1,
       name: "Dr. John Smith",
-      email: "john.smith@mediconet.com",
+      email: "john.smith@arada.com",
       role: "Doctor",
       department: "Cardiology",
       status: "Active",
@@ -17,7 +17,7 @@ const EditViewStaff = () => {
     {
       id: 2,
       name: "Nurse Mary Johnson",
-      email: "mary.johnson@mediconet.com",
+      email: "mary.johnson@arada.com",
       role: "Nurse",
       department: "Pediatrics",
       status: "Active",
@@ -25,7 +25,7 @@ const EditViewStaff = () => {
     {
       id: 3,
       name: "Dr. Sarah Williams",
-      email: "sarah.williams@mediconet.com",
+      email: "sarah.williams@arada.com",
       role: "Doctor",
       department: "Neurology",
       status: "Active",
@@ -33,7 +33,7 @@ const EditViewStaff = () => {
     {
       id: 4,
       name: "James Brown",
-      email: "james.brown@mediconet.com",
+      email: "james.brown@arada.com",
       role: "Receptionist",
       department: "Front Desk",
       status: "Inactive",

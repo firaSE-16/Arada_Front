@@ -4,14 +4,15 @@ import BottomNav from '@/components/layoutComponents/BottomNav';
 
 const Layout = ({children}) => {
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Navbar />
-      <main className="max-w-screen-xl mx-auto px-4 py-6">
+      <main className="flex-grow max-w-screen-xl mx-auto px-4 py-6 w-full">
         {children}
       </main>
-      <BottomNav />
+      <Footer />
+    
     </div>
   );
 }
 
-export default Layout
+export default Layout;

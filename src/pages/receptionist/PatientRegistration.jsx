@@ -2,11 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Search, UserPlus, BookOpenText } from "lucide-react"
-import { Skeleton } from "@/components/ui/skeleton"
+import { Search, UserPlus, BookOpenText, ArrowRight } from "lucide-react"
 import axios from "axios"
 import { BASE_URL } from "@/lib/utils"
 import moment from "moment"
@@ -70,122 +66,120 @@ const PatientRegistration = () => {
   }
 
   return (
-    <div className="p-6 max-w-6xl mx-auto bg-emerald-50 min-h-screen">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-        <div className="flex items-center gap-3">
-          <BookOpenText className="h-8 w-8 text-emerald-600" />
-          <h1 className="text-2xl font-bold text-emerald-800">Patient Registry</h1>
+    <div className="min-h-screen bg-white py-12 px-4 font-outfit">
+      <div className="max-w-5xl mx-auto">
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10">
+          <div>
+            <h1 className="text-4xl font-semibold text-gray-800">Patient Management</h1>
+            <p className="text-lg text-gray-600 mt-2">Find and manage patient profiles</p>
+          </div>
+          <button 
+            onClick={handleNewRegistration} 
+            className="w-full sm:w-auto px-6 py-3 bg-[#5AC5C8] text-white rounded-full hover:bg-[#4AB0B3] transition-all transform hover:scale-105"
+          >
+            <UserPlus className="inline-block h-5 w-5 mr-2" />
+            Add New Patient
+          </button>
         </div>
-        <Button 
-          onClick={handleNewRegistration} 
-          className="w-full md:w-auto bg-emerald-600 hover:bg-emerald-700 text-white"
-        >
-          <UserPlus className="mr-2 h-4 w-4" />
-          New Registration
-        </Button>
-      </div>
 
-      <div className="relative mb-8 bg-white rounded-lg shadow-sm border border-emerald-100">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-emerald-500" />
-        <Input
-          placeholder="Search patients by ID, name or phone number (min 3 characters)..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10 border-0 focus-visible:ring-2 focus-visible:ring-emerald-200"
-        />
-      </div>
+        {/* Search Section */}
+        <div className="relative mb-10">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-[#5AC5C8]" />
+          <input
+            placeholder="Enter patient ID, name, or phone number..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#5AC5C8] transition-all"
+          />
+        </div>
 
-      {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={`skeleton-${i}`} className="border border-emerald-100 rounded-lg p-4 bg-white shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <Skeleton className="h-12 w-12 rounded-full bg-emerald-100" />
+        {/* Results Section */}
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={`skeleton-${i}`} className="border border-gray-200 rounded-lg p-6 bg-white shadow-lg">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-gray-100 animate-pulse"></div>
+                  <div className="space-y-2">
+                    <div className="h-4 w-[150px] bg-gray-100 animate-pulse"></div>
+                    <div className="h-3 w-[100px] bg-gray-100 animate-pulse"></div>
+                  </div>
+                </div>
                 <div className="space-y-2">
-                  <Skeleton className="h-4 w-[150px] bg-emerald-100" />
-                  <Skeleton className="h-3 w-[100px] bg-emerald-100" />
+                  <div className="h-4 w-full bg-gray-100 animate-pulse"></div>
+                  <div className="h-4 w-full bg-gray-100 animate-pulse"></div>
+                  <div className="h-4 w-full bg-gray-100 animate-pulse"></div>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-full bg-emerald-100" />
-                <Skeleton className="h-4 w-full bg-emerald-100" />
-                <Skeleton className="h-4 w-full bg-emerald-100" />
-              </div>
-              <Skeleton className="h-9 w-full mt-4 rounded-md bg-emerald-100" />
-            </div>
-          ))}
-        </div>
-      ) : patients.length > 0 ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {patients.map((patient) => (
-              <div 
-                key={patient.faydaID} 
-                className="border border-emerald-100 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-800 font-medium text-lg">
-                    {patient.firstName.charAt(0).toUpperCase()}{patient.lastName.charAt(0).toUpperCase()}
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg text-emerald-900">{patient.firstName} {patient.lastName}</h3>
-                    <p className="text-sm text-emerald-600">ID: {patient.faydaID}</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 text-sm mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-emerald-600">Date of Birth</span>
-                    <span className="text-emerald-900">{moment(patient.dateOfBirth).format('DD MMM YYYY')}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-emerald-600">Gender</span>
-                    <Badge 
-                      variant={patient.gender === 'Female' ? 'default' : 'outline'}
-                      className="capitalize px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 border-emerald-200"
-                    >
-                      {patient.gender}
-                    </Badge>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-emerald-600">Contact</span>
-                    <span className="text-emerald-900">{patient.contactNumber}</span>
-                  </div>
-                </div>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800"
-                  onClick={() => handlePatientSelect(patient.faydaID)}
-                >
-                  View Details
-                </Button>
+                <div className="h-10 w-full mt-4 rounded-full bg-gray-100 animate-pulse"></div>
               </div>
             ))}
           </div>
-          <div className="text-sm text-emerald-600 text-center">
-            Showing {patients.length} {patients.length === 1 ? 'patient' : 'patients'}
+        ) : patients.length > 0 ? (
+          <>
+            <div className="mb-6 flex justify-between items-center">
+              <h2 className="text-2xl font-semibold text-gray-800">Patient Results</h2>
+              <span className="text-gray-600 text-lg">{patients.length} {patients.length === 1 ? 'patient' : 'patients'} found</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {patients.map((patient) => (
+                <div 
+                  key={patient.faydaID} 
+                  className="border border-gray-200 rounded-lg p-6 bg-white shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-full bg-[#5AC5C8] text-white font-semibold text-lg">
+                      {patient.firstName.charAt(0).toUpperCase()}{patient.lastName.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800">{patient.firstName} {patient.lastName}</h3>
+                      <p className="text-sm text-gray-600">ID: {patient.faydaID}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 text-sm text-gray-600 mb-4">
+                    <div className="flex justify-between">
+                      <span>Date of Birth</span>
+                      <span className="text-gray-800">{moment(patient.dateOfBirth).format('DD MMM YYYY')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Gender</span>
+                      <span className="px-2 py-1 text-xs border border-gray-200 rounded-full capitalize">{patient.gender}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Contact</span>
+                      <span className="text-gray-800">{patient.contactNumber}</span>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => handlePatientSelect(patient.faydaID)}
+                    className="w-full px-4 py-3 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105"
+                  >
+                    View Profile
+                    <ArrowRight className="inline-block ml-2 h-5 w-5" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-16 border border-gray-200 rounded-lg bg-gray-50">
+            <Search className="h-12 w-12 text-[#5AC5C8] mb-4" />
+            <p className="text-lg text-gray-600 mb-4">
+              {searchQuery.length >= 3 ? 
+                'No patients match your search' : 
+                'Enter a search term to find patients'}
+            </p>
+            {searchQuery.length >= 3 && (
+              <button 
+                onClick={() => setSearchQuery("")}
+                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105"
+              >
+                Clear Search
+              </button>
+            )}
           </div>
-        </>
-      ) : (
-        <div className="flex flex-col items-center justify-center py-12 border border-emerald-100 rounded-lg bg-white shadow-sm">
-          <Search className="h-12 w-12 text-emerald-400 mb-4" />
-          <p className="text-emerald-600 text-lg mb-4">
-            {searchQuery.length >= 3 ? 
-              'No matching patients found' : 
-              'Search for patients to begin (minimum 3 characters)'}
-          </p>
-          {searchQuery.length >= 3 && (
-            <Button 
-              variant="outline" 
-              onClick={() => setSearchQuery("")}
-              className="border-emerald-300 text-emerald-700 hover:bg-emerald-50"
-            >
-              Clear search
-            </Button>
-          )}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
